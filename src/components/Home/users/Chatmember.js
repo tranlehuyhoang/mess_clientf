@@ -5,7 +5,7 @@ const Chatmember = () => {
     useEffect(() => {
         async function fetchUsers() {
             try {
-                const response = await axios.get('http://localhost:5000/api/user');
+                const response = await axios.get('https://server-mess.onrender.com//api/user');
                 setUsers(response.data.message);
                 console.log(response.data.message)
             } catch (error) {
