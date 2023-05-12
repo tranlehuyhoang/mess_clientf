@@ -1,10 +1,10 @@
- 
+
 import io from "socket.io-client";
 import { useState } from "react";
 import Chat from "./Chat";
 import './hee.css'
 
-const socket = io.connect("http://localhost:5000");
+const socket = io.connect("https://server-mess.onrender.com");
 
 function Chatsss() {
   const [username, setUsername] = useState("");
@@ -46,4 +46,3 @@ function Chatsss() {
 }
 
 export default Chatsss;
- 
