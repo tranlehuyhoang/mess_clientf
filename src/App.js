@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import Home from './components/Home/Home';
 import Logins from './components/Login/Logins';
 import Signups from './components/Signup/Signups';
-import Chatsss from './components/Chatsss';
+ 
 import { useEffect, useState } from 'react';
 
 
@@ -27,9 +27,7 @@ function App() {
       <Routes>
         <Route path="/signup" element={<Signups />} />
       </Routes>
-      <Routes>
-        <Route path="/chat" element={<Chatsss />} />
-      </Routes>
+
     </BrowserRouter>
   );
 }
