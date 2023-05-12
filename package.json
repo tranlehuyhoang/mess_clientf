@@ -6,9 +6,18 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "annyang": "^2.6.1",
+    "axios": "^1.4.0",
+    "daisyui": "^2.51.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-redux": "^8.0.5",
+    "react-router": "^6.11.1",
+    "react-router-dom": "^6.11.1",
     "react-scripts": "5.0.1",
+    "react-scroll-to-bottom": "^4.2.0",
+    "redux": "^4.2.1",
+    "socket.io-client": "^4.6.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -34,5 +43,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.3.2"
   }
 }
