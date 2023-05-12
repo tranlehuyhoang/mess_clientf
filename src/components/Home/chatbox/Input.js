@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import io from "socket.io-client";
 
-const socket = io.connect("http://localhost:5000");
+const socket = io.connect("https://server-mess.onrender.com");
 const Input = () => {
     const [currentMessage, setCurrentMessage] = useState("");
     const handleOnChangeValueInput = (event) => {
