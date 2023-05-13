@@ -2,7 +2,6 @@ import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import Home from './components/Home/Home';
 import Logins from './components/Login/Logins';
 import Signups from './components/Signup/Signups';
- 
 import { useEffect, useState } from 'react';
 
 
@@ -12,8 +11,7 @@ function App() {
     setstate(localStorage.getItem('user') || false)
   }, [state]);
   return (
-    <BrowserRouter>
-
+    <BrowserRouter basename='/client_mess'>
       <Routes>
         {state ?
           <Route path="/" element={<Home />} />
