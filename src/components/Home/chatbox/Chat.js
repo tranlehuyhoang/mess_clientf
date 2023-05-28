@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
 import Box from './Box'
 import Input from './Input'
+import screenshotImagfafee from './wp5529802-hd-4k-anime-your-name-wallpapers.jpg'
+import './Box.css'
+import screenshotImage from './Screenshot 2023-05-28 134554.png'
 import { useDispatch, useSelector } from 'react-redux';
 import { setHide, setShow } from '../../../redux/actions';
 const Chat = () => {
@@ -16,12 +19,11 @@ const Chat = () => {
         <div className='relative flex-col flex-1 h-[100vh] overflow-y-scroll'>
             <div className="navbar bg-base-100 bg-gray-700 w-[100%] justify-between sticky top-0 z-50">
                 <div className="flex-1 flex-row">
-                    <div className="w-12 ">
-                        <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                    <div className="avatar h-12">
+                        <img src={screenshotImage} className="rounded-full w-full h-full object-cover" style={{ borderRadius: '50%' }} />
                     </div>
-                    <label tabIndex={0} className="  flex-1 p-2">
-
-                        <h1 className=" font-bold ">Box Office News!</h1>
+                    <label tabIndex={0} className="flex-1 p-2">
+                        <h1 className="font-bold">We18304_☬ᴘʀιvᴀтᴇ☬_Lập trình</h1>
                     </label>
                 </div>
                 <div className="flex-none">
@@ -40,7 +42,8 @@ const Chat = () => {
                     </div>
                 </div>
             </div>
-            <div className='relative'>
+            <div className='relative  '>
+                <img src={screenshotImagfafee} alt="" className='fixed top-0 w-full h-full -z-10 boxxxx' />
                 <Box />
                 <Input />
             </div>

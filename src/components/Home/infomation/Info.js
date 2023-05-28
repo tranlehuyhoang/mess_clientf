@@ -19,7 +19,7 @@ const Info = () => {
                                 <img src='https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg' />
                             </div>
                         </div>
-                        <h1 className='py-3 font-bold'>Box Office News!</h1>
+                        <h1 className='py-3 font-bold'>We18304_☬ᴘʀιvᴀтᴇ☬_Lập trình</h1>
                         <p className='px-6'>Đang hoạt động</p>
                         <div className=''>
                             <button className='btn btn-circle btn-outline'>

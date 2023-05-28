@@ -1,30 +1,57 @@
 import React, { useState } from 'react';
 import io from "socket.io-client";
+import {
+    ref,
+    uploadBytes,
+    getDownloadURL,
+    listAll,
+    list,
+} from "firebase/storage";
+import { v4 } from "uuid";
+import { storage } from "../firebase/Config.js";
 
-const socket = io.connect("https://server-mess.onrender.com");
+const socket = io.connect("http://localhost:5000");
 const Input = () => {
+    const [imageUpload, setImageUpload] = useState(null);
+    const [imageUrls, setImageUrls] = useState([]);
+    const [fileContent, setFileContent] = useState(null);
     const [currentMessage, setCurrentMessage] = useState("");
     const handleOnChangeValueInput = (event) => {
         setCurrentMessage(event.target.value);
-      };
+    };
+   
     const sendMessage = async () => {
         const messageData = {
             room: 1,
             author: localStorage.getItem('user'),
-            message: currentMessage,
+            message: fileContent ? fileContent : currentMessage,
             time:
                 new Date(Date.now()).getHours() +
                 ":" +
                 new Date(Date.now()).getMinutes(),
         };
         console.log(messageData)
+        setFileContent(null)
         await socket.emit("send_message", messageData);
+    };
+
+    const handleFileChange = (event) => {
+        const file = event.target.files[0];
+        const reader = new FileReader();
+        reader.onload = (event) => {
+            setFileContent(event.target.result);
+            console.log(event.target.result)
+        };
+        reader.readAsDataURL(file);
     };
     return (
         <div className="sticky w-[100%]  bottom-0 flex right-0">
+            {fileContent &&
+                <img src={fileContent} alt="" srcset="" className='h-[300px]' />
+            }
+
             <span className="absolute inset-y-0 flex items-center">
                 <button
-
                     type="button"
                     className="inline-flex items-center justify-center rounded-full h-12 w-12 transition duration-500 ease-in-out text-gray-200 hover:bg-gray-300 focus:outline-none"
                 >
@@ -71,10 +98,8 @@ const Input = () => {
                         />
                     </svg>
                 </button>
-                <button
-                    type="button"
-                    className="inline-flex items-center justify-center rounded-full h-10 w-10 transition duration-500 ease-in-out text-gray-200 hover:bg-gray-300 focus:outline-none"
-                >
+
+                <label htmlFor="username">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
@@ -95,7 +120,8 @@ const Input = () => {
                             d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"
                         ></path>
                     </svg>
-                </button>
+                </label>
+                <input onChange={handleFileChange} className='w-[0px]' type="file" id="username" name="username" />
                 <button
                     type="button"
                     className="inline-flex items-center justify-center rounded-full h-10 w-10 transition duration-500 ease-in-out text-gray-500 hover:bg-gray-300 focus:outline-none"

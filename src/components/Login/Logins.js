@@ -17,10 +17,10 @@ const Logins = () => {
     }
 
     const handleSubmit = async (event) => {
-       
+
         console.log(`Username: ${username}, Password: ${password}`);
         try {
-            const response = await axios.get('https://server-mess.onrender.com/api/user');
+            const response = await axios.get('https://messenger-mhlu.onrender.com/api/user');
             const users = response.data.message
             console.log(users)
             await users.map((e) => {

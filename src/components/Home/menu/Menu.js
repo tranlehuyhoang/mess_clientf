@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import io from "socket.io-client";
+
+const socket = io.connect("hhttps://messenger-mhlu.onrender.com/");
 
 const Menu = () => {
     const [img, setimg] = useState();
@@ -8,6 +11,10 @@ const Menu = () => {
         setimg(localStorage.getItem('avatar'))
 
     }, []);
+    const handleDisconnect = () => {
+        console.log('logout')
+        socket.disconnect()
+    }
     return (
 
         <div className="top-0  flex flex-col justify-between text-gray-900 bg-white border border-gray-200  dark:bg-gray-700 dark:border-gray-600 dark:text-white">
@@ -44,7 +51,7 @@ const Menu = () => {
                                     <Link to={'/login'}><a>Log in</a></Link>
                                 </li>
                                 <li>
-                                    <Link to={'/signup'}><a>Log out</a></Link>
+                                    <Link onClick={handleDisconnect} to={'/signup'}><a>Log out</a></Link>
 
                                 </li>
                             </ul>
