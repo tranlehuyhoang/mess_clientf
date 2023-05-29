@@ -11,7 +11,7 @@ function App() {
     setstate(localStorage.getItem('user') || false)
   }, [state]);
   return (
-    <BrowserRouter basename='/client_mess'>
+    <BrowserRouter basename='/mess_clientf'>
       <Routes>
         {state ?
           <Route path="/" element={<Home />} />

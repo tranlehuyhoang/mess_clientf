@@ -8,7 +8,7 @@ import {
     list,
 } from "firebase/storage";
 import { v4 } from "uuid";
-import { storage } from "../firebase/Config.js";
+ 
 
 const socket = io.connect("http://localhost:5000");
 const Input = () => {
