@@ -34,6 +34,7 @@ const Input = () => {
         console.log(messageData)
         setFileContent(null)
         await socket.emit("send_message", messageData);
+        setCurrentMessage("")
     };
     const handleFileChangess = (event) => {
         const file = event.target.files[0];
@@ -55,7 +56,7 @@ const Input = () => {
         handleFileChangess(event)
         const reader = new FileReader();
         reader.onload = (event) => {
-           
+
             console.log(event.target.result)
         };
         reader.readAsDataURL(file);
