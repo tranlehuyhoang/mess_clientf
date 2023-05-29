@@ -32,7 +32,7 @@ const Signups = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await axios.post('http://localhost:5000api/user', { username: name, password: password, avatar: image, name: namename });
+            const response = await axios.post('https://messenger-mhlu.onrender.com/api/user', { username: name, password: password, avatar: image, name: namename });
             console.log(response.data)
             alert('Thành công')
             navigate('/login')
