@@ -180,12 +180,12 @@ const Box = () => {
                     <div className="chat-header pb-3">
                         {filteredName(e.author)}
                     </div>
-                    {e.message.includes('data:') &&
+                    {e.message.includes('https://firebasestorage') &&
                         <img src={e.message} className='h-[500px]' />
 
                     }
                     {
-                        e.message.includes('http') &&
+                        e.message.includes('http') && !e.message.includes('https://firebasestorage') &&
                         <a className="chat-bubble" href={e.message}>{e.message}</a>
 
                     }

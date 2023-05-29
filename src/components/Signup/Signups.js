@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import storage from '../Firebase/Config'
 const Signups = () => {
+
     const [namename, setNamename] = useState();
     const [name, setName] = useState();
     const [image, setImage] = useState();
@@ -11,12 +13,29 @@ const Signups = () => {
     const handleNameChange = (event) => {
         setName(event.target.value);
     }
+    const handleFileChange = (event) => {
+        const file = event.target.files[0];
+        const storageRef = storage.ref();
+        const fileRef = storageRef.child(`images/${file.name}`);
+        fileRef.put(file).then(() => {
+
+            // Lấy link ảnh
+            fileRef.getDownloadURL().then((url) => {
+                
+                url && setImage(url)
+            });
+        }).catch((error) => {
+            console.error(error);
+        });
+    };
     function handleFileSelect(event) {
         const file = event.target.files[0];
+        handleFileChange(event)
+
         const reader = new FileReader();
 
         reader.onload = function (event) {
-            setImage(event.target.result);
+
         };
         reader.readAsDataURL(file);
     }
@@ -31,13 +50,13 @@ const Signups = () => {
     }
     const handleSubmit = async (event) => {
         event.preventDefault();
+        await console.log(name, password, image, namename)
         try {
             const response = await axios.post('https://messenger-mhlu.onrender.com/api/user', { username: name, password: password, avatar: image, name: namename });
-            console.log(response.data)
             alert('Thành công')
             navigate('/login')
         } catch (error) {
-            alert('Username đã tồn tại')
+            alert(error)
         }
     }
     return (

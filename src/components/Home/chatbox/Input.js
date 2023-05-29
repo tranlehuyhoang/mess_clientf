@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import io from "socket.io-client";
+import storage from '../../Firebase/Config';
 import {
     ref,
     uploadBytes,
@@ -8,7 +9,7 @@ import {
     list,
 } from "firebase/storage";
 import { v4 } from "uuid";
- 
+
 
 const socket = io.connect("https://messenger-mhlu.onrender.com");
 const Input = () => {
@@ -19,7 +20,7 @@ const Input = () => {
     const handleOnChangeValueInput = (event) => {
         setCurrentMessage(event.target.value);
     };
-   
+
     const sendMessage = async () => {
         const messageData = {
             room: 1,
@@ -34,12 +35,27 @@ const Input = () => {
         setFileContent(null)
         await socket.emit("send_message", messageData);
     };
+    const handleFileChangess = (event) => {
+        const file = event.target.files[0];
+        const storageRef = storage.ref();
+        const fileRef = storageRef.child(`images/${file.name}`);
+        fileRef.put(file).then(() => {
 
+            // Lấy link ảnh
+            fileRef.getDownloadURL().then((url) => {
+
+                url && setFileContent(url)
+            });
+        }).catch((error) => {
+            console.error(error);
+        });
+    };
     const handleFileChange = (event) => {
         const file = event.target.files[0];
+        handleFileChangess(event)
         const reader = new FileReader();
         reader.onload = (event) => {
-            setFileContent(event.target.result);
+           
             console.log(event.target.result)
         };
         reader.readAsDataURL(file);
