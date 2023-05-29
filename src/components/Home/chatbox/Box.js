@@ -5,7 +5,7 @@ import cheerio from 'cheerio';
 import axios from 'axios'
 import screenshotImage from './wp5529802-hd-4k-anime-your-name-wallpapers.jpg'
 import faefaefaef from './Screenshot 2023-05-28 134554 copy.png'
-const socket = io.connect("https://messenger-mhlu.onrender.com/");
+const socket = io.connect("https://messenger-mhlu.onrender.com");
 // const socket = io.connect("http://localhost:5000");
 const Box = () => {
     const chatRef = useRef(null);
