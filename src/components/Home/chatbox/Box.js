@@ -7,6 +7,7 @@ import faefaefaef from './Screenshot 2023-05-28 134554 copy.png'
 const socket = io.connect("https://messenger-mhlu.onrender.com");
 // const socket = io.connect("http://localhost:5000");
 const Box = () => {
+    const messagesEndRef = useRef(null);
     const chatRef = useRef(null);
     const chatWindowRef = useRef(null);
     const [currentMessage, setCurrentMessage] = useState(true);
@@ -61,6 +62,9 @@ const Box = () => {
         }
         // Remainder of useEffect...
     }, [isJoined]);
+    const scrollToBottom = () => {
+        messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+      };
     const getDataWithAxios = async () => {
         console.log('object')
         try {
@@ -75,6 +79,7 @@ const Box = () => {
                 message: message.message,
                 time: message.time
             })));
+            scrollToBottom()
             try {
                 const response = await axios.get('https://messenger-mhlu.onrender.com/api/user');
                 setUsers(response.data.message);
@@ -136,6 +141,7 @@ const Box = () => {
         socket.on("receive_message", (data) => {
             setMessageList((list) => [...list, data]);
             console.log("receive_message")
+            scrollToBottom()
         });
         // Remove event listener when component unmounts
         return () => {
@@ -144,7 +150,7 @@ const Box = () => {
         };
     }, [socket]);
     useEffect(() => {
-        chatWindowRef.current.scrollTop = chatWindowRef.current.scrollHeight;
+        scrollToBottom()
     }, [messageList]);
     useEffect(() => {
         socket.on("status_user", (data) => {
@@ -198,6 +204,7 @@ const Box = () => {
 
                 </div>
             ))}
+            <div ref={messagesEndRef} />
         </div>
     )
 }
