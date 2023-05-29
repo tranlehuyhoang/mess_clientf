@@ -10,7 +10,7 @@ import {
 import { v4 } from "uuid";
  
 
-const socket = io.connect("http://localhost:5000");
+const socket = io.connect("https://messenger-mhlu.onrender.com");
 const Input = () => {
     const [imageUpload, setImageUpload] = useState(null);
     const [imageUrls, setImageUrls] = useState([]);

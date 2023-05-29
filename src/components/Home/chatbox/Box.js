@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
 import io from "socket.io-client";
-import cheerio from 'cheerio';
 
 import axios from 'axios'
 import screenshotImage from './wp5529802-hd-4k-anime-your-name-wallpapers.jpg'

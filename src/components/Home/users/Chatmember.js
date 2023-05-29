@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import io from "socket.io-client";
 import axios from 'axios'
-const socket = io.connect("https://messenger-mhlu.onrender.com/");
+const socket = io.connect("https://messenger-mhlu.onrender.com");
 const Chatmember = () => {
     const [status, setstatus] = useState([]);
     const [users, setUsers] = useState([]);
@@ -32,7 +32,7 @@ const Chatmember = () => {
     }, []);
     const getOnlineUsers = async () => {
         try {
-            const response = await axios.get('https://messenger-mhlu.onrender.com/');
+            const response = await axios.get('https://messenger-mhlu.onrender.com/api/status');
             const onlineUsers = response.data;
             setstatus(onlineUsers)
         } catch (error) {
