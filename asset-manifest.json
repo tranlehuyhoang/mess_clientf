@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/mess_clientf/static/css/main.e4f4d5a9.css",
-    "main.js": "/mess_clientf/static/js/main.a636786f.js",
+    "main.css": "/mess_clientf/static/css/main.fb340f08.css",
+    "main.js": "/mess_clientf/static/js/main.31b058a6.js",
     "static/media/wp5529802-hd-4k-anime-your-name-wallpapers.jpg": "/mess_clientf/static/media/wp5529802-hd-4k-anime-your-name-wallpapers.e1754984f6a4629ecd8c.jpg",
     "static/media/Screenshot 2023-05-28 134554 copy.png": "/mess_clientf/static/media/Screenshot 2023-05-28 134554 copy.b0f02b5df77cd1399115.png",
     "static/media/Screenshot 2023-05-28 134554.png": "/mess_clientf/static/media/Screenshot 2023-05-28 134554.b0f02b5df77cd1399115.png",
     "index.html": "/mess_clientf/index.html",
-    "main.e4f4d5a9.css.map": "/mess_clientf/static/css/main.e4f4d5a9.css.map",
-    "main.a636786f.js.map": "/mess_clientf/static/js/main.a636786f.js.map"
+    "main.fb340f08.css.map": "/mess_clientf/static/css/main.fb340f08.css.map",
+    "main.31b058a6.js.map": "/mess_clientf/static/js/main.31b058a6.js.map"
   },
   "entrypoints": [
-    "static/css/main.e4f4d5a9.css",
-    "static/js/main.a636786f.js"
+    "static/css/main.fb340f08.css",
+    "static/js/main.31b058a6.js"
   ]
 }
