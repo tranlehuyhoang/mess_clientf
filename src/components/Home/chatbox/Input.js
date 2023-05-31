@@ -88,14 +88,14 @@ const Input = () => {
                     </svg>
                 </button>
             </span>
-            <input
+            <textarea
                 value={currentMessage}
                 onChange={handleOnChangeValueInput}
                 type="text"
                 placeholder="Write your message!"
                 className="w-full focus:outline-none focus:placeholder-gray-400 text-gray-200 placeholder-gray-600 pl-12 bg-gray-700 rounded-md py-3"
             />
-            <div className="absolute right-0 items-center inset-y-0 hidden sm:flex">
+            <div className="absolute right-0 items-center inset-y-0 flex sm:flex">
                 <button
                     type="button"
                     className="inline-flex items-center justify-center rounded-full h-10 w-10 transition duration-500 ease-in-out text-gray-200 hover:bg-gray-300 focus:outline-none"

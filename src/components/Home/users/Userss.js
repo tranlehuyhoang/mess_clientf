@@ -3,7 +3,7 @@ import Chatmember from './Chatmember'
 
 const Users = () => {
     return (
-        <div className='h-[100vh] overflow-y-scroll'>
+        <div className='h-[100vh] overflow-y-scroll   md:block hidden'>
             <div className=' sticky flex flex-col lg:p-5 bg-gray-700 items-center top-0 z-50'>
                 <div className='flex justify-center p-4'>
                     <div className='m-2'> Chat</div>

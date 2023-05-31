@@ -17,7 +17,7 @@ const Chat = () => {
     }
     return (
         <div className='relative flex-col flex-1 h-[100vh] overflow-y-scroll'>
-            <div className="navbar bg-base-100 bg-gray-700 w-[100%] justify-between sticky top-0 z-50">
+            <div className="navbar bg-base-100 bg-gray-700 w-[100%] justify-between sticky top-0 z-50 flex">
                 <div className="flex-1 flex-row">
                     <div className="avatar h-12">
                         <img src={screenshotImage} className="rounded-full w-full h-full object-cover" style={{ borderRadius: '50%' }} />
@@ -26,7 +26,7 @@ const Chat = () => {
                         <h1 className="font-bold">We18304_☬ᴘʀιvᴀтᴇ☬_Lập trình</h1>
                     </label>
                 </div>
-                <div className="flex-none">
+                <div className="flex-none md:hidden sm:hidden  xl:block  flex-none">
                     <div className="dropdown dropdown-end">
                     </div>
                     <div className="dropdown dropdown-end flex items-center ">
@@ -42,7 +42,7 @@ const Chat = () => {
                     </div>
                 </div>
             </div>
-            <div className='relative  '>
+            <div className='relative  ' >
                 <img src={screenshotImagfafee} alt="" className='fixed top-0 w-full h-full -z-10 boxxxx' />
                 <Box />
                 <Input />

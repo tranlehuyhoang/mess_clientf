@@ -64,7 +64,7 @@ const Box = () => {
     }, [isJoined]);
     const scrollToBottom = () => {
         messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-      };
+    };
     const getDataWithAxios = async () => {
         console.log('object')
         try {
@@ -131,24 +131,28 @@ const Box = () => {
             getOnlineUsers()
             console.log('user_online')
         })
+        socket.off("user_online");
     }, [socket]);
     useEffect(() => {
-        getDataWithAxios()
+        // Call getDataWithAxios once when component mounts
+        getDataWithAxios();
+    }, []);
 
-
-
+    useEffect(() => {
         // Add event listener for "receive_message" event
-        socket.on("receive_message", (data) => {
+        const receiveMessageHandler = (data) => {
             setMessageList((list) => [...list, data]);
-            console.log("receive_message")
-            scrollToBottom()
-        });
+            console.log("receive_message");
+            scrollToBottom();
+        };
+        socket.on("receive_message", receiveMessageHandler);
+
         // Remove event listener when component unmounts
         return () => {
-            socket.off("receive_message");
+            socket.off("receive_message", receiveMessageHandler);
             socket.off("send_user");
         };
-    }, [socket]);
+    }, []);
     useEffect(() => {
         scrollToBottom()
     }, [messageList]);
@@ -157,17 +161,8 @@ const Box = () => {
             console.log("status_user")
             getOnlineUsers()
         })
+        socket.off("status_user");
     }, []);
-    const filterStatus = (name) => {
-        for (let i = 0; i < status.length; i++) {
-            if (name == status[i].name && status[i].ids != "") {
-                console.log(name, 'online')
-                return 'online'
-            }
-        }
-        console.log(name, 'offline')
-        return 'offline'
-    };
 
     return (
         <div className={`px-5 min-h-screen bg-[${screenshotImage}]  `} ref={chatWindowRef}>
@@ -175,7 +170,7 @@ const Box = () => {
             {messageList && messageList.map((e, i) => (
                 <div key={i} className={`chat ${e.author === name ? 'chat-end' : 'chat-start'}`} ref={chatRef}>
 
-                    <div className={`avatar chat-image ${filterStatus(e.author)}`}>
+                    <div className={`avatar chat-image `}>
                         <div className="w-12 rounded-full">
                             {users &&
                                 <img src={filteredUsers(e.author)} />
@@ -186,18 +181,30 @@ const Box = () => {
                     <div className="chat-header pb-3">
                         {filteredName(e.author)}
                     </div>
-                    {e.message.includes('https://firebasestorage') &&
-                        <img src={e.message} className='h-[500px]' />
+                    {e.message.includes('https://firebasestorage') && !e.message.includes('mp4') && !e.message.includes('mov') &&
+                        <img src={e.message} className='h-[300px]' />
 
                     }
                     {
                         e.message.includes('http') && !e.message.includes('https://firebasestorage') &&
-                        <a className="chat-bubble" href={e.message}>{e.message}</a>
+                        <a className="chat-bubble"
+                            style={{ wordWrap: 'break-word' }}
+                            href={e.message}>{e.message}</a>
 
                     }
                     {
                         !e.message.includes('data:') && !e.message.includes('http') &&
-                        <div className="chat-bubble">{e.message}</div>
+                        <div className="chat-bubble"
+                            style={{ wordWrap: 'break-word' }}
+                        >{e.message}</div>
+                    }
+                    {
+                        e.message.includes('mp4') &&
+                        <video loop className='h-[300px]' autoPlay muted re src={e.message}></video>
+                    }
+                    {
+                        e.message.includes('mov') &&
+                        <video className='h-[300px]' loop autoPlay muted src={e.message}></video>
                     }
 
                     <time className="text-xs pt-3  opacity-50">{e.time}</time>

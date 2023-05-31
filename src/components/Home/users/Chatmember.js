@@ -15,9 +15,8 @@ const Chatmember = () => {
                 console.error(error);
             }
         }
-
         fetchUsers();
-    }, []);
+    }, [socket]);
     useEffect(() => {
         socket.on('user_online', (data) => {
             getOnlineUsers()
@@ -50,7 +49,7 @@ const Chatmember = () => {
         return 'offline'
     };
     return (
-        <ul className="menu bg-base-100  w-100%">
+        <ul className="menu bg-base-100  w-100% ">
 
             {users.map((e, i) => {
                 return (
