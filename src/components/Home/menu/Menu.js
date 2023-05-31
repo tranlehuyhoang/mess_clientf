@@ -17,7 +17,7 @@ const Menu = () => {
     }
     return (
 
-        <div className="top-0  flex flex-col justify-between text-gray-900 bg-white border border-gray-200  dark:bg-gray-700 dark:border-gray-600 dark:text-white  ">
+        <div className="top-0  flex flex-col justify-between     bg-gray-700    text-white border border-gray-200  dark:bg-gray-700 dark:border-gray-600 dark:text-white  ">
             <div className='flex-col flex'>
                 <button type="button" className="relative inline-flex items-center  px-4 py-2 text-sm font-medium border-b border-gray-200 rounded-t-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white">
                     <svg viewBox="0 0 36 36" class="x1lliihq x1k90msu x2h7rmj x1qfuztq x198g3q0" fill="currentColor" height="28" width="28"><path clip-rule="evenodd" d="M29 17.504c0 6.103-4.606 10.57-11 10.57-1.065 0-2.08-.095-3.032-.327a4.26 4.26 0 00-2.39.09L8.91 28.962c-.59.202-1.164-.372-.964-.985l.729-2.411a3.007 3.007 0 00-.291-2.5C7.414 21.484 7 19.596 7 17.504v-.002c0-6.103 4.607-10.498 11-10.498s11 4.395 11 10.498v.002z" fill-rule="evenodd"></path></svg>

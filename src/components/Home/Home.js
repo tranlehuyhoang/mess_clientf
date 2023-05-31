@@ -6,7 +6,7 @@ import Info from './infomation/Info'
 
 const Home = () => {
     return (
-        <div className='flex h-[100vh] w-[100%]'>
+        <div className='flex h-[100vh] w-[100%] '>
             <Menu />
             <Users />
             <Chat />
