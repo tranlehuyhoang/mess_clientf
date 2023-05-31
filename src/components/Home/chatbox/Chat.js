@@ -26,7 +26,7 @@ const Chat = () => {
                         <h1 className="font-bold">We18304_☬ᴘʀιvᴀтᴇ☬_Lập trình</h1>
                     </label>
                 </div>
-                <div className="flex-none md:hidden sm:hidden  xl:block  flex-none">
+                <div className="   lg:block  hidden flex-none">
                     <div className="dropdown dropdown-end">
                     </div>
                     <div className="dropdown dropdown-end flex items-center ">
